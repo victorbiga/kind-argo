@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ubuntu-deployment
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/victorbiga/kind-argo.git'
+    targetRevision: HEAD
+    path: apps/ubuntu  # Path in your Git repository where manifests are stored
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ubuntu
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:     # Sync options which modifies sync behavior
+    - CreateNamespace=true 

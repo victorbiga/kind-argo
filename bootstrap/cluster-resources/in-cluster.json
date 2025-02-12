@@ -1,1 +1,1 @@
-{"name":"in-cluster","server":"https://kubernetes.default.svc"}
+{"name":"management","server":"https://kubernetes.default.svc"}
